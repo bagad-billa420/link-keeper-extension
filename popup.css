@@ -1,0 +1,267 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #6b7280;
+  --card: #f6f8fa;
+  --border: #d0d7de;
+  --accent: #4f46e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1e22;
+    --fg: #e6e6e6;
+    --muted: #9aa0a6;
+    --card: #2a2a30;
+    --border: #3c3c44;
+    --accent: #818cf8;
+  }
+}
+
+[hidden] { display: none !important; }
+
+* { box-sizing: border-box; }
+
+body {
+  width: 380px;
+  height: 560px;
+  margin: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+h1 { font-size: 16px; margin: 0; }
+#stats { color: var(--muted); font-size: 12px; }
+
+summary {
+  cursor: pointer;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+input, select, textarea, button {
+  font: inherit;
+  color: inherit;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+button {
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+button.primary {
+  width: 100%;
+  padding: 8px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+button.ghost, .button-like {
+  background: none;
+  font-size: 12px;
+  text-align: center;
+}
+
+.button-like {
+  display: inline-block;
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.controls { display: flex; flex-direction: column; gap: 6px; }
+.row { display: flex; gap: 6px; }
+.row select { flex: 1; }
+
+#list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+}
+
+.item.visited .title { opacity: 0.55; }
+
+.item-main {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.fav {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.text { min-width: 0; flex: 1; }
+
+.title {
+  display: block;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.url, .notes {
+  color: var(--muted);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notes { white-space: normal; }
+
+.tags span {
+  display: inline-block;
+  margin: 2px 3px 0 0;
+  padding: 0 6px;
+  font-size: 11px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.actions button {
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+#empty {
+  text-align: center;
+  color: var(--muted);
+  margin: 20px 0;
+}
+
+footer {
+  display: flex;
+  gap: 6px;
+}
+
+footer > * { flex: 1; }
+
+#toast {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  background: var(--fg);
+  color: var(--bg);
+  white-space: nowrap;
+}
+
+/* ---- nickname, similar-link and editor styles ---- */
+
+.sub {
+  color: var(--muted);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  cursor: help;
+}
+
+.item.editing { display: block; }
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.editor textarea { resize: vertical; }
+
+.editor .row button { flex: 1; }
+
+footer button { padding: 6px 4px; }
+
+/* ---- save-with-nickname form ---- */
+
+#quickSaveForm {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+#quickSaveForm .row button { flex: 1; }
+
+.preview {
+  color: var(--muted);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

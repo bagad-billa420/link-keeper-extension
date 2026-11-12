@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Link Keeper",
+  "version": "1.0.0",
+  "description": "Save any website link, tag it, search it, and visit it anytime.",
+  "permissions": ["storage", "tabs", "contextMenus", "favicon"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Link Keeper"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "save-current-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Save the current tab to Link Keeper"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Link Keeper</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>🔖 Link Keeper</h1>
+    <span id="stats"></span>
+  </header>
+
+  <section>
+    <button id="saveCurrent" class="primary">Save current tab</button>
+    <form id="quickSaveForm" hidden>
+      <div id="previewUrl" class="preview"></div>
+      <input id="quickNickname" type="text" placeholder="Nickname for this link (optional)" maxlength="40" />
+      <div class="row">
+        <button type="submit" class="primary">Save</button>
+        <button type="button" id="quickCancel">Cancel</button>
+      </div>
+    </form>
+    <details>
+      <summary>Add a link manually</summary>
+      <form id="addForm">
+        <input id="url" type="url" placeholder="https://example.com" required />
+        <input id="nickname" type="text" placeholder="Nickname (short name, optional)" maxlength="40" />
+        <input id="title" type="text" placeholder="Title (optional)" />
+        <input id="folder" type="text" placeholder="Folder, e.g. Work" list="folderList" />
+        <input id="tags" type="text" placeholder="Tags, comma separated" />
+        <textarea id="notes" rows="2" placeholder="Notes (optional)"></textarea>
+        <button type="submit" class="primary">Save link</button>
+      </form>
+    </details>
+  </section>
+
+  <section class="controls">
+    <input id="search" type="search" placeholder="Search nickname, title, URL, tags…" />
+    <div class="row">
+      <select id="statusFilter">
+        <option value="all">All links</option>
+        <option value="to-visit">To visit</option>
+        <option value="visited">Visited</option>
+        <option value="pinned">Pinned</option>
+        <option value="similar">Has similar links</option>
+      </select>
+      <select id="folderFilter">
+        <option value="">All folders</option>
+      </select>
+    </div>
+  </section>
+
+  <datalist id="folderList"></datalist>
+
+  <ul id="list"></ul>
+  <p id="empty" hidden>No links here yet. Save one!</p>
+
+  <footer>
+    <button id="random" class="ghost" title="Open a random link you haven't visited">🎲 Random</button>
+    <button id="tidy" class="ghost" title="Merge exact duplicate links">🧹 Tidy</button>
+    <button id="exportBtn" class="ghost" title="Download all links as JSON">Export</button>
+    <label class="ghost button-like" title="Import a Link Keeper JSON file">
+      Import
+      <input id="importFile" type="file" accept="application/json" hidden />
+    </label>
+  </footer>
+
+  <div id="toast" hidden></div>
+
+  <script src="store.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
